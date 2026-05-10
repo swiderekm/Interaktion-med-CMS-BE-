@@ -38,6 +38,12 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "book"
+    },
+    "book": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "readList"
     }
   }
 }

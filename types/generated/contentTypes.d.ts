@@ -442,6 +442,10 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
   };
   attributes: {
     autho: Schema.Attribute.String;
+    book: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -504,12 +508,9 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    colorBlind: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dark: Schema.Attribute.String;
-    light: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -517,6 +518,8 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    theme: Schema.Attribute.Enumeration<['light', 'dark', 'colorBlind']> &
+      Schema.Attribute.DefaultTo<'light'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1006,6 +1009,7 @@ export interface PluginUsersPermissionsUser
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
+    readList: Schema.Attribute.Relation<'manyToMany', 'api::book.book'>;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',

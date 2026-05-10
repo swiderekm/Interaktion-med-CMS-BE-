@@ -11,14 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "light": {
-      "type": "string"
-    },
-    "dark": {
-      "type": "string"
-    },
-    "colorBlind": {
-      "type": "string"
+    "theme": {
+      "type": "enumeration",
+      "default": "light",
+      "enum": [
+        "light",
+        "dark",
+        "colorBlind"
+      ]
     }
   }
 }
