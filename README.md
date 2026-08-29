@@ -4,10 +4,12 @@ Backend project created as part of the Interaction with CMS course.
 
 The project was built using Strapi CMS and was responsible for managing the content and providing data to the frontend through a REST API.
 
+The project was developed by myself as a form of examination.
+
 The project was developed by myself.
 Technologies
 CMS: Strapi
-API: API
+API
 Backend: Strapi
 ⚠️ Backend unavailable
 
